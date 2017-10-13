@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+	
+<!-- Dave Barnes -->
+<!-- Project 2 -->
+
+<html>
+	<head>
+		<title> Dave's Game </title>
+
+		<style type = "text/css">
+      	body { 
+          font-family: tahoma;
+          text-align: center;
+          color: black; 
+        }
+
+     	  div { 
+          position: relative;
+          background-color: lightsteelblue; 
+        }
+
+     	  h1 {
+          font-size: 20pt;
+          font-family: impact;
+          color: white;
+          font-weight: lighter;
+          letter-spacing: 2pt;
+        }
+
+      }
+
+   </style>
+
+  </head>
+
+<script type="text/javascript">
+
+      	// Global Variables
+
+      	var score = 0;
+      	var locIsNorth = false;
+      	var locIsEast = false;
+      	var locIsSouth = false;
+      	var locIsWest = false;
+
+      	
+      	// Message Function
+
+        function message () {
+          var loc = "";
+
+          start: loc = "You're in the car with some friends about to go on a food bender!";
+                 break;
+          north: loc = "You made it to Five Guys! Chow down on a BLT and cheese dog.";
+                 break;
+          east: loc = "Rossi's! Prosciutto, mozz, chcken cutlet, with balsamic reduction. Not bad!";
+                 break;
+          south: loc = "Can you smell the sushi? Pick up some chopsticks at Mizu.";
+                 break;
+          west: loc = "Have a cup of coffee and eat some chicken and waffles at The Poughkeepsie Grind!";
+                 break;
+          default: loc = "Lots of traffic. Go the other way!!";
+                 break;
+
+        }
+      	
+
+      	// North 
+      	function btnNorth_click() {
+      	   document.getElementById("message").value = "Chow down on a BLT and cheese dog at Five Guys.";
+
+        	 if (locIsNorth == false) {
+              score = score + 5;
+              locIsNorth == true;
+
+              document.getElementById("Score").value = "Score" + score;
+
+          }
+
+      }
+
+		    // East 
+      	function btnEast_click() {
+        	document.getElementById("message").value = "Prosciutto, mozz, chcken cutlet, and balsamic reduction at Rossi's. Not bad!";
+
+
+        		if (locIsEast == false) {
+              score = score + 5;
+              locIsEast == true;
+
+              document.getElementById("Score").value = "Score" + score;
+
+          }
+      }
+
+		    // South 
+      	function btnSouth_click() {
+      	  document.getElementById("message").value = "Dig your chopsticks into some sushi at Mizu.";
+
+
+      		if (locIsSouth == false) {
+      				score = score + 5;
+      				locIsSouth == true;
+
+              document.getElementById("Score").value = "Score" + score;
+
+          }
+
+      } 
+
+		    // West 
+      	function btnWest_click() {
+      	  document.getElementById("message").value = "Congratulations! Eat some chicken and waffles at The Poughkeepsie Grind.";
+
+
+      		if (locIsWest == false) {
+              score = score + 5;
+              locIsWest == true;
+
+              document.getElementById("Score").value = "Score" + score;
+
+          }
+
+       }
+
+
+</script>
+
+	<body>
+    <div> 
+        <h1> Food Bender </h1>
+
+     	  <!-- Textbox and Initial Message -->
+       	<textarea id = "message" rows = "10" cols = "50"> You're in the car with some friends about to go on a food bender!; </textarea>
+
+     	<br>
+
+  	     <input type="button" 
+                value="North"
+                onclick="btnNorth_click();">
+         <input type="button" 
+                value="East"
+                onclick="btnEast_click();">
+         <input type="button" 
+                value="South"
+                onclick="btnSouth_click();">
+         <input type="button" 
+                value="West"
+                onclick="btnWest_click();">
+
+      <br>
+
+        <!-- Scoring -->
+       	<textarea id = "Score"> No current score. </textarea>
+  
+    </div>
+
+  </body>
+
+</html>
+
+
+
+
