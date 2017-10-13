@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+
+<!-- Dave Barnes -->
+<!-- Project 2 -->
+
+<html>
+   <head>
+  
+      <title>
+         Daves's Game
+      </title>
+
+      <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+
+      <style type = "text/css">
+      body { font-family: tahoma;
+              text-align: center;
+              text-shadow: black; }
+      div { position: relative;
+            background-color: lightsteelblue; }
+      h1 {font-size: 20pt;
+          font-family: impact;
+          color: white;
+          font-weight: lightest;
+          letter-spacing: 2pt;}
+      h2 {font-weight: bold;}
+      </style>
+      <script type="text/javascript">
+
+        // Global Variables
+         
+         var currentLocation = 0;
+         var score = 0;
+         var navigationErrorCount = 0;
+         var sarcasmThreshold = 5;
+         
+         var hasVisitedLoc0 = false;
+         var hasVisitedLoc1 = false;
+         var hasVisitedLoc2 = false;
+         var hasVisitedLoc3 = false;
+         var hasVisitedLoc4 = false;
+                  
+        // Initialization
+         
+         function init() {
+            look();
+         }
+         
+        // Directional Buttons
+
+         function btnNorth_click() {
+            if (currentLocation === 0) {
+               currentLocation = 1;
+               look();               
+            } else {
+              if (currentLocation === 3) {
+                 currentLocation = 0;
+                 look();            
+              } else {
+                 navigationError(); 
+              }
+            }            
+         }
+
+         function btnSouth_click() {
+            if (currentLocation === 1) {
+               currentLocation = 0;
+               look();
+            } else {
+              if (currentLocation === 0) {
+                 currentLocation = 3;
+                 look();
+              } else {
+                 navigationError(); 
+              }
+            }
+         }
+
+         function btnEast_click() {
+            if (currentLocation === 4) {
+               currentLocation = 0;
+               look();
+            } else {
+              if (currentLocation === 0) {
+                 currentLocation = 2;
+                 look();
+              } else {
+                 navigationError(); 
+              }
+            }
+         }
+
+         function btnWest_click() {
+            if (currentLocation === 2) {
+               currentLocation = 0;
+               look();
+            } else {
+              if (currentLocation === 0) {
+                 currentLocation = 4;
+                 look();
+              } else {
+                 navigationError(); 
+              }
+            }
+         }
+                  
+         
+         // Story / Locale Functions
+         
+         function look() {
+            var desc = "";
+            switch(currentLocation) {
+               case 0: desc = "0. You're in the car with some friends about to go on a food bender!";
+                       break;
+               case 1: desc = "1. Chow down on a BLT and cheese dog at Five Guys.";
+                       break; 
+               case 2: desc = "2. Dig your chopsticks into some sushi at Mizu.";
+                       break;
+               case 3: desc = "3. Prosciutto, mozz, chcken cutlet, and balsamic reduction at Rossi's. Not bad! ";
+                       break;
+               case 4: desc = "4. Congratulations! Eat some chicken and waffles at The Poughkeepsie Grind.";
+                       break;
+               default: desc = "You're stuck in traffic! Go the other way!!!";
+            }
+            checkScore();
+            desc = desc + "\n" + "Score: " + score ;
+            displayMessage(desc);
+         }
+
+         function navigationError() {
+            navigationErrorCount = navigationErrorCount + 1;
+            if (navigationErrorCount < sarcasmThreshold) {
+               displayMessage("You cannot go that way.");
+            } else {
+               displayMessage("I already told you! You can't go that way.");
+            }            
+         }
+
+         function checkScore() {
+            if (! hasVisitedLoc0) {            
+               if (currentLocation === 0) {
+                  score = score + 5;
+                  hasVisitedLoc0 = true;
+               }
+            } else if ( (! hasVisitedLoc1) && (currentLocation === 1) ) {            
+                  score = score + 5;
+                  hasVisitedLoc1 = true;
+            } else if ( (! hasVisitedLoc2) && (currentLocation === 2) ) {            
+                  score = score + 5;
+                  hasVisitedLoc2 = true;
+            } else if ( (! hasVisitedLoc3) && (currentLocation === 3) ) {            
+                  score = score + 5;
+                  hasVisitedLoc3 = true;
+            } else if ( (! hasVisitedLoc4) && (currentLocation === 4) ) {            
+                  score = score + 5;
+                  hasVisitedLoc4 = true;
+            }            
+         }
+
+         
+        // Utility Function(s)
+         
+         function displayMessage(msg) {
+            var target = document.getElementById("taMain");
+            target.value = msg + "\n\n" + target.value;
+         }
+      </script>
+   </head>
+
+      <div>
+          <h1>
+            Food Bender
+          </h1>
+      </div>
+
+   <body onload="init();"><div>
+       <textarea id="taMain" rows="8" cols="32">
+         
+       </textarea>
+       
+       <br>
+       Command:       
+       <input type="text" 
+              id = "txtCommand"
+              name="txtCommand">
+
+       <input type="button"
+              value="Go" 
+              onclick="btnGo_click();" />                           
+       
+       <br>
+       <input type="button" 
+              value="North"
+              onclick="btnNorth_click();">
+       <input type="button" 
+              value="South"
+              onclick="btnSouth_click();">
+       <input type="button" 
+              value="East"
+              onclick="btnEast_click();">
+       <input type="button" 
+              value="West"
+              onclick="btnWest_click();">
+
+      
+       <br>
+
+       <a href= "mailto:david.barnes1@marist.edu">Hi Professor, you can email me here!</a>
+
+   </body>
+
+</html>
