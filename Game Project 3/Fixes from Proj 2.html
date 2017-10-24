@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+	
+<!-- Dave Barnes -->
+<!-- Project 2 edits, including email link and restructure of directionals by "currentLocation" global -->
+
+<!--                                        GAME MAP                            -->
+<!--                                                                            -->
+<!--                                     1. Five Guys                           -->
+<!--                                          |                                 -->
+<!--   4. The Poughkeepsie Grind    -    0. Start    -    2. Rossi's            -->
+<!--                                          |                                 -->
+<!--                                     3. Mizu Sushi                          -->
+
+<html>
+	<head>
+		<title> Dave's Game </title>
+
+		<style type = "text/css">
+      	body { 
+          font-family: tahoma;
+          text-align: center;
+          color: black; 
+        }
+
+     	  div { 
+          position: relative;
+          background-color: lightsteelblue; 
+        }
+
+     	  h1 {
+          font-size: 20pt;
+          font-family: impact;
+          color: white;
+          font-weight: lighter;
+          letter-spacing: 2pt;
+        }
+
+      }
+
+   </style>
+
+  </head>
+
+<script type="text/javascript">
+
+      	// Global Variables
+
+        var hasVisitedBefore = false;
+        var score = 0;
+        
+        currentLocation = 0;
+        
+
+        // Message for Event Handlers
+
+
+          function updateDisplay(message) {
+          
+            document.getElementById("message").value = message;
+
+        }
+          
+
+      	// North
+      	function btnNorth_click() {
+
+          if (currentLocation == 0) {
+
+              currentLocation = 1;
+              var message = "Chow down on a BLT and cheese dog at Five Guys.";
+              updateDisplay(message);   
+
+              if (!hasVisitedBefore) {
+                  score += 5;
+                  document.getElementById("Score").value = "Score: " + score;
+
+              }          
+
+          } else if (currentLocation == 3) {
+
+                currentLocation = 0;
+                var message = "You're in the car with some friends about to go on a food bender!";
+                updateDisplay(message);
+
+              }
+
+        }
+
+		    // East 
+      	function btnEast_click() {
+
+          if (currentLocation == 0) {
+
+              currentLocation = 2;
+              var message = "Prosciutto, mozz, chicken cutlet, and balsamic reduction at Rossi's. Not bad!";
+              updateDisplay(message);
+
+              if(!hasVisitedBefore) { 
+                  score += 5;
+                  document.getElementById("Score").value = "Score: " + score;
+
+              }
+
+          } else if (currentLocation == 4) {
+
+                currentLocation = 0;
+                var message = "You're in the car with some friends about to go on a food bender!";
+                updateDisplay(message);
+
+              }
+          
+        } 
+
+		    // South 
+      	function btnSouth_click() {
+
+          if (currentLocation == 0) {
+
+              currentLocation = 3;
+              var message = "Dig your chopsticks into some sushi at Mizu.";
+              updateDisplay(message);
+
+              if(!hasVisitedBefore) { 
+                  score += 5;
+                  document.getElementById("Score").value = "Score: " + score;
+
+              }
+
+          } else if (currentLocation == 1) {
+
+                currentLocation = 0;
+                var message = "You're in the car with some friends about to go on a food bender!";
+                updateDisplay(message);
+
+              }
+      	  
+        } 
+
+		    // West 
+      	function btnWest_click() {
+      	  
+          if (currentLocation == 0) {
+
+              currentLocation = 4;
+              var message = "Congratulations! Eat some chicken and waffles at The Poughkeepsie Grind.";
+              updateDisplay(message);
+
+              if(!hasVisitedBefore) { 
+                  score += 5;
+                  document.getElementById("Score").value = "Score: " + score;
+
+              }
+
+          } else if (currentLocation == 2) {
+
+                currentLocation = 0;
+                var message = "You're in the car with some friends about to go on a food bender!";
+                updateDisplay(message);
+
+              }
+        }        
+
+
+</script>
+
+	<body>
+    <div> 
+        <h1> Food Bender </h1>
+
+     	  <!-- Textbox and Initial Message -->
+       	<textarea id = "message" rows = "10" cols = "50"> You're in the car with some friends about to go on a food bender! </textarea>
+
+     	<br>
+
+  	     <input type="button" 
+                value="North"
+                onclick="btnNorth_click();">
+         <input type="button" 
+                value="East"
+                onclick="btnEast_click();">
+         <input type="button" 
+                value="South"
+                onclick="btnSouth_click();">
+         <input type="button" 
+                value="West"
+                onclick="btnWest_click();">
+
+      <br>
+
+        <!-- Scoring -->
+       	<textarea id = "Score"> No current score. </textarea>
+      <br>
+      <a href= "mailto:david.barnes1@marist.edu"> Have questions? Email me here.</a>
+  
+    </div>
+
+  </body>
+
+</html>
+
+
+
+
