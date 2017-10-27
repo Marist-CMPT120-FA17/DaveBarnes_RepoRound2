@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+  
+<!-- Dave Barnes -->
+<!-- Project 3 -->
+
+<!--                                        GAME MAP                                                                -->
+<!--                                                                                                                -->
+<!--                                     1. Five Guys                              6. Blue Collar Brewery           -->
+<!--                                          |                                         |                           -->
+<!--   4. The Poughkeepsie Grind    -    0. High Street    -    2. Rossi's    -    5. Mill House Brewery            -->
+<!--                                          |                                                                     -->
+<!--                                     3. Mizu Sushi                                                              -->
+
+<html>
+  <head>
+    <title> Dave's Game </title>
+
+    <style type = "text/css">
+        body { 
+          font-family: tahoma;
+          text-align: center;
+          color: black; 
+        }
+
+        div { 
+          position: relative;
+          background-color: lightsteelblue; 
+        }
+
+        h1 {
+          font-size: 20pt;
+          font-family: impact;
+          color: white;
+          font-weight: lighter;
+          letter-spacing: 2pt;
+        }
+
+   </style>
+
+  </head>
+
+<script type="text/javascript">
+
+       // // Global Variables // //
+
+        var score = 0;
+
+        var hasVisitedBefore = false;
+        var hasVisitedFiveGuys = false;
+        var hasVisitedRossis = false;
+        var hasVisitedMizu = false;
+        var hasVisitedThePoughkeepsieGrind = false;
+        var hasVisitedMillHouseBrewery = false;
+        var hasVisitedBlueCollarBrewery = false;
+
+        currentLocation = 0;
+
+        
+       // // Display Message // //
+
+        function updateDisplay(message) {
+          document.getElementById("display").value = message;
+
+        }
+
+
+        // Switch Case
+        function whereAmI() {
+          var desc = "";
+          switch (currentLocation) {
+
+              case 0:
+                  highStreet();
+                  break;
+              case 1:
+                  fiveGuys();
+                  break;
+              case 2:
+                  rossis();
+                  break;
+              case 3:
+                  mizu();
+                  break;
+              case 4:
+                  poughkeepsieGrind();
+                  break;
+              case 5:
+                  millHouse();
+                  break;
+              case 6:
+                  blueCollar();
+                  break;
+              // default: desc = "There's heavy traffic! Try another location.";
+
+          }
+
+        }
+
+
+       // // Score Keeper // //
+
+        function updateScore() {
+
+          if (!hasVisitedBefore) {
+              if (currentLocation == 1 && !hasVisitedFiveGuys) {
+                  score += 5;
+                  document.getElementById("Score").value = "Score: " + score;
+                  hasVisitedFiveGuys = true;
+              
+              } else if (currentLocation == 2 && !hasVisitedRossis) {
+                  score += 5;
+                  document.getElementById("Score").value = "Score: " + score;
+                  hasVisitedRossis = true;
+
+              } else if (currentLocation == 3 && !hasVisitedMizu) {
+                  score += 5;
+                  document.getElementById("Score").value = "Score: " + score;
+                  hasVisitedMizu = true;
+
+              } else if (currentLocation == 4 && !hasVisitedThePoughkeepsieGrind) {
+                  score += 5;
+                  document.getElementById("Score").value = "Score: " + score;
+                  hasVisitedThePoughkeepsieGrind = true;
+
+              } else if (currentLocation == 5 && !hasVisitedMillHouseBrewery) {
+                  score += 5;
+                  document.getElementById("Score").value = "Score: " + score;
+                  hasVisitedMillHouseBrewery = true;
+
+              } else if (currentLocation == 6 && !hasVisitedBlueCollarBrewery) {
+                  score += 5;
+                  document.getElementById("Score").value = "Score: " + score;
+                  hasVisitedBlueCollarBrewery = true;
+
+              }
+          }
+
+        }
+
+
+        
+       // // Locations // //
+
+
+        // High Street
+        function highStreet() {
+
+          if (currentLocation == 0) {
+
+              var message = "You're in the car with some friends about to go on a food bender!";
+              updateDisplay(message);   
+
+          }
+
+
+        }
+
+
+        // Five Guys
+        function fiveGuys() {
+
+            var message = "Chow down on a BLT and cheese dog at Five Guys.";
+            updateDisplay(message);
+
+            updateScore();
+
+              //if (!hasVisitedBefore) {
+                 // score += 5;
+                 // document.getElementById("Score").value = "Score: " + score;
+                 // hasVisitedBefore = true;
+                  
+        }
+
+
+        // Rossi's
+        function rossis() {
+
+            var message = "Prosciutto, mozz, chicken cutlet, and balsamic reduction at Rossi's. Not bad!";
+            updateDisplay(message);
+
+            updateScore();
+
+        }
+
+
+        // Mizu
+        function mizu() {
+
+            var message = "Dig your chopsticks into some sushi at Mizu.";
+            updateDisplay(message);
+
+            updateScore();
+
+        }
+
+
+        // The Poughkeepsie Grind
+        function poughkeepsieGrind() {
+
+            var message = "Congratulations! Eat some chicken and waffles at The Poughkeepsie Grind.";
+            updateDisplay(message);   
+
+            updateScore();
+
+        }
+
+
+        // Mill House Brewery
+        function millHouse() {
+
+            var message = "Sink your teeth into a French cheesteak au jus.";
+            updateDisplay(message);   
+
+            updateScore();
+
+        }
+
+
+        // Blue Collar Brewery
+        function blueCollar() {
+
+            var message = "Order handmade chips with crumbled bleu cheese and a balsamic glaze.";
+            updateDisplay(message);   
+
+            updateScore();
+
+        }       
+
+
+
+       // // Directional and Input Buttons // //
+
+
+        // North
+        function btnNorth_click() {
+
+          if (currentLocation == 0) {          
+              currentLocation = 1;
+              whereAmI();
+              document.getElementById("North_button").disabled = true;
+              document.getElementById("East_button").disabled = true;
+              document.getElementById("South_button").disabled = false;
+              document.getElementById("West_button").disabled = true;
+
+                      
+          } else if (currentLocation == 3) {
+              currentLocation = 0;
+              whereAmI();
+              document.getElementById("North_button").disabled = false;
+              document.getElementById("East_button").disabled = false;
+              document.getElementById("South_button").disabled = false;
+              document.getElementById("West_button").disabled = false;
+              
+
+          } else if (currentLocation == 5) {
+              currentLocation = 6;
+              whereAmI();
+              document.getElementById("North_button").disabled = true;
+              document.getElementById("East_button").disabled = true;
+              document.getElementById("South_button").disabled = false;
+              document.getElementById("West_button").disabled = true;
+
+          }
+              
+
+        }
+
+        // East 
+        function btnEast_click() {
+
+          if (currentLocation == 0) {            
+              currentLocation = 2;
+              whereAmI();
+              document.getElementById("North_button").disabled = true;
+              document.getElementById("East_button").disabled = false;
+              document.getElementById("South_button").disabled = true;
+              document.getElementById("West_button").disabled = false;
+                       
+
+          } else if (currentLocation == 4) {
+              currentLocation = 0;
+              whereAmI();
+              document.getElementById("North_button").disabled = false;
+              document.getElementById("East_button").disabled = false;
+              document.getElementById("South_button").disabled = false;
+              document.getElementById("West_button").disabled = false;
+              
+
+          } else if (currentLocation == 2){
+              currentLocation = 5;
+              whereAmI();
+              document.getElementById("North_button").disabled = false;
+              document.getElementById("East_button").disabled = true;
+              document.getElementById("South_button").disabled = true;
+              document.getElementById("West_button").disabled = false;
+
+          }
+              
+
+        }
+
+        // South 
+        function btnSouth_click() {
+
+          if (currentLocation == 0) {
+              currentLocation = 3;
+              whereAmI();
+              document.getElementById("North_button").disabled = false;
+              document.getElementById("East_button").disabled = true;
+              document.getElementById("South_button").disabled = true;
+              document.getElementById("West_button").disabled = true;
+                       
+
+          } else if (currentLocation == 1) {
+              currentLocation = 0;
+              whereAmI();
+              document.getElementById("North_button").disabled = false;
+              document.getElementById("East_button").disabled = false;
+              document.getElementById("South_button").disabled = false;
+              document.getElementById("West_button").disabled = false;
+              
+
+          } else if (currentLocation == 6){
+              currentLocation = 5;
+              whereAmI();
+              document.getElementById("North_button").disabled = false;
+              document.getElementById("East_button").disabled = true;
+              document.getElementById("South_button").disabled = true;
+              document.getElementById("West_button").disabled = false;
+
+          }
+              
+
+        }
+
+        // West 
+        function btnWest_click() {
+          
+
+          if (currentLocation == 0) {
+              currentLocation = 4;
+              whereAmI();
+              document.getElementById("North_button").disabled = true;
+              document.getElementById("East_button").disabled = false;
+              document.getElementById("South_button").disabled = true;
+              document.getElementById("West_button").disabled = true;
+                       
+
+          } else if (currentLocation == 2) {
+              currentLocation = 0;
+              whereAmI();
+              document.getElementById("North_button").disabled = false;
+              document.getElementById("East_button").disabled = false;
+              document.getElementById("South_button").disabled = false;
+              document.getElementById("West_button").disabled = false;
+              
+          } else if (currentLocation == 5) {
+              currentLocation = 2;
+              whereAmI();
+              document.getElementById("North_button").disabled = true;
+              document.getElementById("East_button").disabled = false;
+              document.getElementById("South_button").disabled = true;
+              document.getElementById("West_button").disabled = false;
+
+          }
+              
+
+        }
+
+        // Go
+        function btnGo_click() {
+
+          var command = document.getElementById("Command").value;
+          var errorMessage = "Invalid command... Valid commands are: N, n, E, e, S, s, W, w.";
+
+            if (command === "N" || command === "n") {
+              btnNorth_click();
+
+            } else if (command === "E" || command === "e") {
+              btnEast_click();
+
+            } else if (command === "S" || command === "s") {
+              btnSouth_click();
+
+            } else if (command === "W" || command === "w") {
+              btnWest_click();
+
+            } else {
+
+              updateDisplay(errorMessage).str;
+            }
+
+            whereAmI();
+
+        }
+
+
+
+
+
+</script>
+
+  <body>
+    <div> 
+        <h1> Food Bender </h1>
+
+        <!-- Textbox and Initial Message -->
+        <textarea id = "display" rows = "10" cols = "50"> You're in the car with some friends about to go on a food bender! </textarea>
+
+    
+       <br>
+
+         <input type="button"
+                id="North_button"
+                value="North"
+                onclick="btnNorth_click();">
+         <input type="button" 
+                id="East_button"
+                value="East"
+                onclick="btnEast_click();">
+         <input type="button" 
+                id="South_button"
+                value="South"
+                onclick="btnSouth_click();">
+         <input type="button" 
+                id="West_button"
+                value="West"
+                onclick="btnWest_click();">
+         
+       <br>
+       <br>
+
+        <!-- Command Box and Go Button -->
+      
+         <input type="text" 
+                id="Command"
+                value="Write a command">
+
+         <input type="button" 
+                value="Go"
+                onclick="btnGo_click();">
+
+      <br>
+      <br>
+
+      <!-- Scoring -->
+        <textarea id = "Score" rows = "2" cols = "10"> No current score. </textarea>
+
+      <br>
+      <br>
+
+      <a href= "mailto:david.barnes1@marist.edu"> Have questions? Email me here.</a>
+  
+    </div>
+
+  </body>
+
+</html>
+
+
+
+
