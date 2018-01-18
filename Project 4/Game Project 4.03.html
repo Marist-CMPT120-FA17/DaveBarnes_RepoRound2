@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+  
+<!-- Dave Barnes -->
+<!-- Project 4.02  -->
+
+
+
+
+
+
+
+<!--                                                 GAME MAP                                                                       -->
+<!--                                                                                                                                -->
+<!--                                              10. Mizu Sushi                                                                    -->
+<!--                                                    |                                                                           -->
+<!--                                               9. Hyde Park                                                                     -->
+<!--                                                   Brewing                                                                      -->
+<!--                                                    |                                                                           -->
+<!--                                                    |                                                                           -->
+<!--                                                    |                                                                           -->
+<!--                                               8. Mobil                                                                         -->
+<!--                                                    |                                                                           -->
+<!--                                               6. RiteAid ....... 0. High St..... 4. Blue Collar                                -->
+<!--                                                    |                  |             Brewery                                    -->
+<!--                                                    |                  |                                                        -->
+<!--                                          2. The Poughkeepsie ... 1. Mill House .................... 7. Billy Bob's BBQ         -->
+<!--                                                  Grind               Brewing                                                   -->
+<!--                                                    |                                                                           -->
+<!--   11. Underground Coffee & Ales ........ 3. Rossi's Rosticceria                                                                -->
+<!--                                                    |                                                                           -->
+<!--                                                    |                                                                           -->
+<!--                                                    |                                                                           -->
+<!--                                                    |                                                                           -->
+<!--                                               5. Five Guys                                                                     -->
+<!--                                                    |                                                                           -->
+<!--                                                    |                                                                           -->
+<!--                                                    |                                                                           -->
+<!--                                                    |                                                                           -->
+<!--                                                    |                                                                           -->
+<!--                                                    |                                                                           -->
+<!--                                                    |                                                                           -->
+<!--                                           12. Aroma Osteria                                                                    -->
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+  <head>
+    <title> Dave's Game </title>
+
+    <style type = "text/css">
+        body { 
+          font-family: tahoma;
+          text-align: center;
+          color: black; 
+        }
+        div { 
+          position: relative;
+          background-color: lightsteelblue; 
+        }
+        h1 {
+          font-size: 20pt;
+          font-family: impact;
+          color: white;
+          font-weight: lighter;
+          letter-spacing: 2pt;
+        }
+   </style>
+
+  </head>
+
+<script type="text/javascript" src="location.js"> </script>
+
+  <body onload="init();">
+    <div> 
+        <h1> Food Bender </h1>
+
+        <!-- Textbox and Initial Message -->
+        <textarea id = "display" rows = "10" cols = "50"> You're in the car with some friends about to go on a food bender! </textarea>
+
+        <!-- Scoring -->
+        <textarea id = "Score" rows = "2" cols = "6"> No score. </textarea>
+
+       <br>
+
+         <input type="button"
+                id="North_button" 
+                value="North"
+                onclick="btnNorth_click();">
+         <input type="button"
+                id="East_button" 
+                value="East"
+                onclick="btnEast_click();">
+         <input type="button"
+                id="South_button" 
+                value="South"
+                onclick="btnSouth_click();">
+         <input type="button"
+                id="West_button" 
+                value="West"
+                onclick="btnWest_click();">
+
+       <br>
+
+        <!-- Command Box and Go Button -->
+      
+         <input type="text" 
+                id="Command"
+                value="Write a command">
+
+         <input type="button" 
+                value="Go"
+                onclick="btnGo_click();">
+
+
+      <br>
+      <br>
+
+      <div id="map" class="right">
+      <img src="map.png" height="1000" width="700">
+      </div>
+
+      <br>
+      <br>
+
+      <a href= "mailto:david.barnes1@marist.edu"> Have questions? Email me here.</a>
+  
+    </div>
+
+  </body>
+
+</html>

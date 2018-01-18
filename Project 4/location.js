@@ -45,54 +45,75 @@
         }
 
 
-        // Switch Case
+        // Where am I?
         function whereAmI() {
           var desc = "";
-          switch (currentLocation) {
-
-              case 0:
-                  highStreet();
-                  break;
-              case 1:
-                  millHouse();
-                  break;
-              case 2:
-                  poughkeepsieGrind();
-                  break;
-              case 3:
-                  rossis();
-                  break;
-              case 4:
-                  blueCollar();
-                  break;
-              case 5:
-                  fiveGuys();
-                  break;
-              case 6:
-                  riteAid();
-                  break;
-              case 7:
-                  billyBobs();
-                  break;
-              case 8:
-                  mobil();
-                  break;
-              case 9:
-                  hydePark();
-                  break;
-              case 10:
-                  mizu();
-                  break;
-              case 11:
-                  underground();
-                  break;
-              case 12:
-                  aromaOsteria();
-                  break;
-              //default: desc = "You cannot go this way"
+          desc = location[currentLocation] {
 
           }
 
+          updateDisplay(desc);
+        }
+
+
+        var items = new Array();
+        items[0] = credit card;
+        items[6] = Tums;
+        items[8] = gas;
+
+        var credit card = new item (0, "credit card", "This could be useful to pay for something later on.");
+        var Tums = new item (6, "Tums", "Never know when you're going to need Tums when on the road!");
+        var gas = new item (8, "gas", "Let's grad some extra gas.");
+
+        // Items
+        function item (id, name, description) {
+          this.id = id;
+          this.name = name;
+          this. description = description;
+          this.toString = function() {
+              return this.description;
+
+          }
+
+        }
+
+        var highStreet = new location (0, "High Street", "You're back at High Street. Where to next?", "credit card");
+        var millHouse = new location (1, "Mill House Brewing", "Sink your teeth into a French cheesteak au jus.", null);
+        var poughkeepsieGrind = new location (2, "The Poughkeepsie Grind", "Congratulations! Eat some chicken and waffles at The Poughkeepsie Grind.", null);
+        var rossis = new location (3, "Rossi's Rosticceria", "Prosciutto, mozz, chicken cutlet, and balsamic reduction at Rossi's. Not bad!", null);
+        var blueCollar = new location (4, "Blue Collar Brewery", "Order handmade chips with crumbled bleu cheese and a balsamic glaze.", null);
+        var fiveGuys = new location (5, "Five Guys", "Chow down on a BLT and cheese dog at Five Guys.", null);
+        var riteAid = new location (6, "Riteaid", "Don't forget to buy Tums for later on!!!", "Tums");
+        var billyBobs = new location (7, "Billy Bob's BBQ", "Welcome to Billy Bob's BBQ!", null);
+        var mobil = new location (8, "Mobil", "Fuel up if you need to.", "gas");
+        var hydePark = new location (9, "Hyde Park Brewing", "You can't go wrong with kielbasa, knockwurst, bratwurst and a brew.", null);
+        var mizu = new location (10, "Mizu Sushi", "Dig your chopsticks into some sushi at Mizu.", null);
+        var underground = new location (11, "Underground Coffee & Ales", "Welcome to Underground Coffee & Ales!", null);
+        var aromaOsteria = new location (12, "Aroma Osteria", "Welcome to Aroma Osteria.", null);
+
+            location[0] = locationZero;
+            location[1] = locationOne;
+            location[2] = locationTwo;
+            location[3] = locationThree;
+            location[4] = locationFour;
+            location[5] = locationFive;
+            location[6] = locationSix;
+            location[7] = locationSeven;
+            location[8] = locationEight;
+            location[9] = locationNine;
+            location[10] = locationTen;
+        
+
+        // Locations
+        function location(id, name, description, item) {
+          this.id = id;
+          this.name = name;
+          this.description = description;
+          this.item = item;
+          this.toString = function() {
+              return(this.description);
+
+              }
         }
 
 
